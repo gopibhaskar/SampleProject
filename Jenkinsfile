@@ -6,7 +6,7 @@ def props='';
 def tagName="""${JOB_NAME}-${BUILD_TIMESTAMP}"""
 def branchName;
 def commit_username;
-//def commit_Email;
+def commit_Email;
 def appDeployProcess;
 def imageName;
 def envMessage='';
@@ -115,7 +115,7 @@ node{
     		throw e
     	}
     }
-    stage ('Create Docker Image')
+ /*   stage ('Create Docker Image')
     { 
         try {
 				imageName="""${props['docker.registry']}/${props['deploy.app']}:${props['api.version']}"""
@@ -191,7 +191,7 @@ node{
 				echo """${error.getMessage()}"""
 				//throw e
 			}
-    }
+    }*/
     /*stage ('Log JIRA Ticket for Code Promotion')
     {
         try {
