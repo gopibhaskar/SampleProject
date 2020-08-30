@@ -59,7 +59,7 @@ node{
     stage ('Static Code Analysis')
     { 
      try{
-			sh """echo ${workspace}"""
+			//sh """echo ${workspace}"""
 			def scannerHome = tool 'sonar-runner';
 			withSonarQubeEnv('Dockersonar') 
 			{
