@@ -240,6 +240,8 @@ def logJIRATicket(String buildStatus, String buildFailedAt, String projectid, St
 	echo "Build is successfull, no JIRA ticket logged."
 	}
 }*/
+}
+
 def staticCodeAnalysis(String scannerHome, String sonarHosturl)
 {
 	sh """	
@@ -249,5 +251,4 @@ def codeCoverage(String scannerHome, String sonarHosturl)
 {
 	sh """	
 	${scannerHome}/bin/sonar-runner -D sonar.host.url=${sonarHosturl} -D sonar.login=admin -D sonar.password=admin -D sonar.java.binaries=target/classes -D sonar.jacoco.reportPaths=target/jacoco.exec"""
-}
 }
