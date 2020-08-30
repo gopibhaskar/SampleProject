@@ -6,7 +6,7 @@ def props='';
 def tagName="""${JOB_NAME}-${BUILD_TIMESTAMP}"""
 def branchName;
 def commit_username;
-def commit_Email;
+//def commit_Email;
 def appDeployProcess;
 def imageName;
 def envMessage='';
@@ -29,14 +29,14 @@ node{
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
-    		logJIRATicket(currentBuild.result, "At Stage Checkout Code", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-    		notifyBuild(currentBuild.result, "At Stage Checkout Code", "", commit_Email)
+    		//logJIRATicket(currentBuild.result, "At Stage Checkout Code", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
+    		//notifyBuild(currentBuild.result, "At Stage Checkout Code", "", commit_Email)
     		throw e
     	}
 		catch (error) {
 				currentBuild.result='FAILURE'
-				logJIRATicket(currentBuild.result, "At Stage Checkout Code", props['build.JIRAprojectid'], props['build.JIRAissuetype'], commit_Email, props['build.JIRAissuereporter'])
-				notifyBuild(currentBuild.result, "At Stage Checkout Code", "", commit_Email)
+				//logJIRATicket(currentBuild.result, "At Stage Checkout Code", props['build.JIRAprojectid'], props['build.JIRAissuetype'], commit_Email, props['build.JIRAissuereporter'])
+				//notifyBuild(currentBuild.result, "At Stage Checkout Code", "", commit_Email)
 				throw error
 			}
     }
@@ -48,8 +48,8 @@ node{
 		}
 	 catch (e) {
     		currentBuild.result='FAILURE'
-    		logJIRATicket(currentBuild.result,  "At Stage Check Environment", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-    		notifyBuild(currentBuild.result, "At Stage Check Environment", "", commit_Email)
+    		//logJIRATicket(currentBuild.result,  "At Stage Check Environment", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
+    		//notifyBuild(currentBuild.result, "At Stage Check Environment", "", commit_Email)
     		throw e
     	}
     }
@@ -65,8 +65,8 @@ node{
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
-    		logJIRATicket(currentBuild.result,  "At Stage Static Code Analysis", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-    		notifyBuild(currentBuild.result, "At Stage Static Code Analysis", "", commit_Email)
+    		//logJIRATicket(currentBuild.result,  "At Stage Static Code Analysis", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
+    		//notifyBuild(currentBuild.result, "At Stage Static Code Analysis", "", commit_Email)
     		throw e
     	}
      }
@@ -79,8 +79,8 @@ node{
 		catch (e) 
 		{
     		currentBuild.result='FAILURE'
-    		logJIRATicket(currentBuild.result,  "At Stage Build", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-    		notifyBuild(currentBuild.result, "At Stage Build", "", commit_Email)
+    		//logJIRATicket(currentBuild.result,  "At Stage Build", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
+    		//notifyBuild(currentBuild.result, "At Stage Build", "", commit_Email)
     		throw e
     	}
 	 
@@ -92,8 +92,8 @@ node{
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
-    		logJIRATicket(currentBuild.result, "At Stage Unit Testing", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-    		notifyBuild(currentBuild.result, "At Stage Unit Testing", "", commit_Email)
+    		//logJIRATicket(currentBuild.result, "At Stage Unit Testing", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
+    		//notifyBuild(currentBuild.result, "At Stage Unit Testing", "", commit_Email)
     		throw e
     	}
     }
@@ -110,8 +110,8 @@ node{
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
-    		logJIRATicket(currentBuild.result, "At Stage Code Coverage", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-    		notifyBuild(currentBuild.result, "At Stage Code Coverage", "", commit_Email)
+    		//logJIRATicket(currentBuild.result, "At Stage Code Coverage", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
+    		//notifyBuild(currentBuild.result, "At Stage Code Coverage", "", commit_Email)
     		throw e
     	}
     }
@@ -124,8 +124,8 @@ node{
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
-    		logJIRATicket(currentBuild.result, "At Stage Create Package", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-    		notifyBuild(currentBuild.result, "At Stage Create Package", "", commit_Email)
+    		//logJIRATicket(currentBuild.result, "At Stage Create Package", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
+    		//notifyBuild(currentBuild.result, "At Stage Create Package", "", commit_Email)
     		throw e
     	}
     }
@@ -137,8 +137,6 @@ node{
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
-    		logJIRATicket(currentBuild.result, "At Stage Moving Image to Docker Registry", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-    		notifyBuild(currentBuild.result, "At Stage Moving Image to Docker Registry", "", commit_Email)
     		throw e
     	}
     }
@@ -163,8 +161,6 @@ node{
         }
     	catch (e) {
     		currentBuild.result='FAILURE'
-    		logJIRATicket(currentBuild.result, "At Stage Deploy", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-    		notifyBuild(currentBuild.result, "At Stage Deploy", "", commit_Email)
     		throw e
     	}
     }
@@ -186,19 +182,17 @@ node{
 			}
 			catch (e) {
 				currentBuild.result='FAILURE'
-				logJIRATicket(currentBuild.result, "At Stage Validate Microservice Deployment", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-				notifyBuild(currentBuild.result, "At Stage Validate Microservice Deployment", "", commit_Email)
 				throw e
 			}
 			catch (error) {
 				currentBuild.result='UNSTABLE'
 				//logJIRATicket(currentBuild.result, "At Stage Validate Microservice Deployment", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
-				notifyBuild(currentBuild.result, "At Stage Validate Microservice Deployment", "", commit_Email)
+				//notifyBuild(currentBuild.result, "At Stage Validate Microservice Deployment", "", commit_Email)
 				echo """${error.getMessage()}"""
 				//throw e
 			}
     }
-    stage ('Log JIRA Ticket for Code Promotion')
+    /*stage ('Log JIRA Ticket for Code Promotion')
     {
         try {
             logJIRATicket('SUCCESS', "At Stage Log JIRA Ticket", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
@@ -224,7 +218,7 @@ def notifyBuild(String buildStatus, String buildFailedAt, String bodyDetails, St
 	subject: """${buildStatus}: Job ${JOB_NAME} [${BUILD_NUMBER}] ${buildFailedAt}""", 
 	to: """email@server.com,${commit_Email}"""
 }
-def logJIRATicket(String buildStatus, String buildFailedAt, String projectid, String issuetype, String assignTo, String issueReporter) 
+def logJIRATicket(String buildStatus, String buildFailedAt, String projectid, String issuetype, String assignTo, String issueReporter)
 {
 	buildStatus = buildStatus ?: 'SUCCESS'
 	if (buildStatus == 'FAILURE' ){
@@ -245,7 +239,7 @@ def logJIRATicket(String buildStatus, String buildFailedAt, String projectid, St
 	else {
 	echo "Build is successfull, no JIRA ticket logged."
 	}
-}
+}*/
 def staticCodeAnalysis(String scannerHome, String sonarHosturl)
 {
 	sh """	
