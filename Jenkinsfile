@@ -18,10 +18,10 @@ node{
             checkout scm
             props = readProperties  file: """deploy.properties"""
 			workspace = pwd ()
-			branchName=sh(returnStdout: true, script: 'git symbolic-ref --short HEAD').trim()
-			commit_username=sh(returnStdout: true, script: '''username=$(git log -1 --pretty=%ae) 
+			branchName=bat(returnStdout: true, script: 'git symbolic-ref --short HEAD').trim()
+			commit_username=bat(returnStdout: true, script: '''username=$(git log -1 --pretty=%ae)
 																echo ${username%@*} ''').trim();
-			commit_Email=sh(returnStdout: true, script: '''Email=$(git log -1 --pretty=%ae) 
+			commit_Email=bat(returnStdout: true, script: '''Email=$(git log -1 --pretty=%ae)
 																echo $Email''').trim(); 
 			echo commit_username
 			echo commit_Email
