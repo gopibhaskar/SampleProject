@@ -61,9 +61,9 @@ node{
      try{
 			//sh """echo ${workspace}"""
 			def scannerHome = tool 'sonar-runner';
-			withSonarQubeEnv('Dockersonar') 
+			withSonarQubeEnv('Sonarqube-Container')
 			{
-				staticCodeAnalysis(scannerHome, """${Dockersonar}""")
+				staticCodeAnalysis(scannerHome, """${Sonarqube-Container}""")
 			}
         }
     	catch (e) {
