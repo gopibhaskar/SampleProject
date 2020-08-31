@@ -63,7 +63,7 @@ node{
 			def scannerHome = tool 'sonar-runner';
 			withSonarQubeEnv('SonarQContainer')
 			{
-				staticCodeAnalysis(scannerHome, """${SonarQContainer}""")
+				sh 'mvn clean package sonar:sonar'
 			}
         }
     	catch (e) {
@@ -245,11 +245,11 @@ def logJIRATicket(String buildStatus, String buildFailedAt, String projectid, St
 }*/
 }
 
-def staticCodeAnalysis(String scannerHome, String sonarHosturl)
+/*def staticCodeAnalysis(String scannerHome, String sonarHosturl)
 {
 	sh """	
 	${scannerHome}/bin/sonar-runner -Dsonar.host.url=${sonarHosturl} -Dsonar.login=admin -Dsonar.password=admin"""
-}
+}*/
 def codeCoverage(String scannerHome, String sonarHosturl)
 {
 	sh """	
