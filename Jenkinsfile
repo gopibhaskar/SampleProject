@@ -248,10 +248,10 @@ def logJIRATicket(String buildStatus, String buildFailedAt, String projectid, St
 def staticCodeAnalysis(String scannerHome, String sonarHosturl)
 {
 	sh """	
-	${scannerHome}/bin/sonar-runner -D sonar.host.url=${sonarHosturl} -D sonar.login=admin -D sonar.password=admin"""
+	${scannerHome}/bin/sonar-runner -Dsonar.host.url=${sonarHosturl} -Dsonar.login=admin -Dsonar.password=admin"""
 }
 def codeCoverage(String scannerHome, String sonarHosturl)
 {
 	sh """	
-	${scannerHome}/bin/sonar-runner -D sonar.host.url=${sonarHosturl} -D sonar.login=admin -D sonar.password=admin -D sonar.java.binaries=target/classes -D sonar.jacoco.reportPaths=target/jacoco.exec"""
+	${scannerHome}/bin/sonar-runner -Dsonar.host.url=${sonarHosturl} -Dsonar.login=admin -Dsonar.password=admin -Dsonar.java.binaries=target/classes -Dsonar.jacoco.reportPaths=target/jacoco.exec"""
 }
