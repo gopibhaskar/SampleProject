@@ -92,9 +92,10 @@ node{
     { 
       try {
             sh """mvn clean test"""
+	     //codeCoverage(scannerHome, """${SonarQContainer}""")
         }
     	catch (e) {
-    		currentBuild.result='FAILURE'
+    		currentBuild.result='FAILED'
     		//logJIRATicket(currentBuild.result, "At Stage Unit Testing", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
     		//notifyBuild(currentBuild.result, "At Stage Unit Testing", "", commit_Email)
     		throw e
@@ -123,7 +124,6 @@ node{
 		def scannerHome = tool 'sonar-runner';
 			withSonarQubeEnv('SonarQContainer')
 			{
-				//codeCoverage(scannerHome, """${SonarQContainer}""")
 				${scannerHome}/bin/sonar-runner -Dsonar.host.url=${sonarHosturl} -Dsonar.login=admin -Dsonar.password=admin -Dsonar.java.binaries=target/classes -Dsonar.jacoco.reportPaths=target/jacoco.exec"""
 
 			}				
