@@ -124,7 +124,7 @@ node{
 		def scannerHome = tool 'sonar-runner';
 			withSonarQubeEnv('SonarQContainer')
 			{
-				${scannerHome}/bin/sonar-runner -Dsonar.host.url=${sonarHosturl} -Dsonar.login=admin -Dsonar.password=admin -Dsonar.java.binaries=target/classes -Dsonar.jacoco.reportPaths=target/jacoco.exec"""
+				sh """${scannerHome}/bin/sonar-runner -Dsonar.host.url=${sonarHosturl} -Dsonar.login=admin -Dsonar.password=admin -Dsonar.java.binaries=target/classes -Dsonar.jacoco.reportPaths=target/jacoco.exec"""
 
 			}				
         }
