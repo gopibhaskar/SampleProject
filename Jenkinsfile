@@ -77,7 +77,7 @@ node{
     { 
 		try
 		{
-			sh """mvn clean build"""
+			sh """mvn clean compile"""
 		}
 		catch (e) 
 		{
@@ -99,6 +99,21 @@ node{
     		//notifyBuild(currentBuild.result, "At Stage Unit Testing", "", commit_Email)
     		throw e
     	}
+    }
+    stage ('Build')
+    { 
+		try
+		{
+			sh """mvn clean install"""
+		}
+		catch (e) 
+		{
+    		currentBuild.result='FAILURE'
+    		//logJIRATicket(currentBuild.result,  "At Stage Build", props['JIRAprojectid'], props['JIRAissuetype'], commit_Email, props['JIRAissuereporter'])
+    		//notifyBuild(currentBuild.result, "At Stage Build", "", commit_Email)
+    		throw e
+    	}
+	 
     }
 
     stage ('Code Coverage')
