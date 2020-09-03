@@ -123,7 +123,9 @@ node{
 		def scannerHome = tool 'sonar-runner';
 			withSonarQubeEnv('SonarQContainer')
 			{
-				codeCoverage(scannerHome, """${SonarQContainer}""")
+				//codeCoverage(scannerHome, """${SonarQContainer}""")
+				${scannerHome}/bin/sonar-runner -Dsonar.host.url=${sonarHosturl} -Dsonar.login=admin -Dsonar.password=admin -Dsonar.java.binaries=target/classes -Dsonar.jacoco.reportPaths=target/jacoco.exec"""
+
 			}				
         }
     	catch (e) {
@@ -264,9 +266,9 @@ def logJIRATicket(String buildStatus, String buildFailedAt, String projectid, St
 {
 	sh """	
 	${scannerHome}/bin/sonar-runner -Dsonar.host.url=${sonarHosturl} -Dsonar.login=admin -Dsonar.password=admin"""
-}*/
+}
 def codeCoverage(String scannerHome, String sonarHosturl)
 {
 	sh """	
 	${scannerHome}/bin/sonar-runner -Dsonar.host.url=${sonarHosturl} -Dsonar.login=admin -Dsonar.password=admin -Dsonar.java.binaries=target/classes -Dsonar.jacoco.reportPaths=target/jacoco.exec"""
-}
+}*/
