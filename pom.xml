@@ -10,6 +10,7 @@
   </parent>
   <groupId>com.api.javademo</groupId>
   <artifactId>javademo</artifactId>
+  <packaging>war</packaging>
   <version>0.1-SNAPSHOT</version>
   <name>javademo</name>
   <description>Demo project for Spring Boot</description>
